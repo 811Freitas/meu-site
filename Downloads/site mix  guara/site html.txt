@@ -1,0 +1,304 @@
+import React from "react";
+import { motion } from "framer-motion";
+import { Search, ShoppingCart, MapPin, Phone, Newspaper, Instagram, Facebook, Youtube, Menu, ChevronRight, Store, Percent } from "lucide-react";
+
+// Observação: Este é um layout inspirado na experiência do grupo citado,
+// porém com identidade neutra e conteúdo fictício. Você pode customizar
+// cores, textos e imagens livremente.
+
+export default function LandingLikeGrupoMateus() {
+  return (
+    <div className="min-h-screen bg-gray-50 text-gray-900">
+      <TopBar />
+      <Header />
+      <NavBar />
+      <Hero />
+      <FeatureTiles />
+      <PromoCarousel />
+      <StoreLocatorCTA />
+      <NewsSection />
+      <Footer />
+    </div>
+  );
+}
+
+function TopBar() {
+  return (
+    <div className="w-full bg-blue-900 text-white text-xs sm:text-sm">
+      <div className="mx-auto max-w-7xl px-4 py-2 flex items-center justify-between">
+        <div className="flex items-center gap-2">
+          <Phone className="h-4 w-4" />
+          <span>Atendimento: (98) 0000-0000</span>
+        </div>
+        <div className="hidden sm:flex items-center gap-4 opacity-90">
+          <a className="hover:underline" href="#institucional">Institucional</a>
+          <a className="hover:underline" href="#trabalhe">Trabalhe Conosco</a>
+          <a className="hover:underline" href="#contato">Contato</a>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function Header() {
+  return (
+    <header className="bg-white sticky top-0 z-40 shadow-sm">
+      <div className="mx-auto max-w-7xl px-4 py-3 flex items-center gap-4">
+        <button className="inline-flex items-center justify-center rounded-2xl p-3 hover:bg-gray-100 lg:hidden">
+          <Menu className="h-5 w-5" />
+        </button>
+        <div className="flex items-center gap-3">
+          <div className="h-10 w-10 rounded-xl bg-gradient-to-br from-blue-600 to-blue-400" />
+          <div className="font-bold text-xl tracking-tight">SuperMix</div>
+        </div>
+        <div className="flex-1" />
+        <div className="hidden md:flex items-center gap-2 flex-1 max-w-2xl">
+          <div className="relative w-full">
+            <input
+              placeholder="Busque por produtos, ofertas e serviços"
+              className="w-full rounded-2xl border border-gray-200 bg-gray-50 px-4 py-3 pl-11 outline-none focus:ring-2 focus:ring-blue-500"
+            />
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-500" />
+          </div>
+        </div>
+        <button className="ml-2 inline-flex items-center gap-2 rounded-2xl bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 transition">
+          <ShoppingCart className="h-4 w-4" />
+          <span className="hidden sm:block">Meu carrinho</span>
+        </button>
+      </div>
+    </header>
+  );
+}
+
+function NavBar() {
+  const items = [
+    { label: "Ofertas", icon: Percent },
+    { label: "Mercado", icon: Store },
+    { label: "Atacado", icon: Store },
+    { label: "Farmácia", icon: Store },
+    { label: "Eletro", icon: Store },
+    { label: "Gift Card", icon: Store },
+  ];
+  return (
+    <nav className="bg-white/80 backdrop-blur supports-[backdrop-filter]:bg-white/70 border-b">
+      <div className="mx-auto max-w-7xl px-4 py-2 flex items-center gap-3 overflow-x-auto">
+        {items.map(({ label, icon: Icon }) => (
+          <a
+            key={label}
+            href="#"
+            className="group inline-flex items-center gap-2 rounded-2xl px-3 py-2 text-sm text-gray-700 hover:bg-gray-100"
+          >
+            <Icon className="h-4 w-4" /> {label}
+            <ChevronRight className="h-4 w-4 opacity-0 group-hover:opacity-100 transition" />
+          </a>
+        ))}
+        <div className="ml-auto hidden md:flex items-center gap-2 text-sm text-gray-600">
+          <MapPin className="h-4 w-4" />
+          <span>Informe sua localização</span>
+        </div>
+      </div>
+    </nav>
+  );
+}
+
+function Hero() {
+  return (
+    <section className="relative overflow-hidden bg-gradient-to-br from-blue-50 via-white to-blue-50">
+      <div aria-hidden className="pointer-events-none absolute -right-32 -top-24 h-72 w-72 rounded-full bg-blue-300/20 blur-3xl" />
+      <div className="mx-auto max-w-7xl px-4 py-10 lg:py-14 grid lg:grid-cols-2 gap-8 items-center">
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight">
+            Tudo o que você precisa, em um só lugar.
+          </h1>
+          <p className="mt-4 text-gray-600 text-lg">
+            Ofertas imperdíveis, serviços e facilidades para o seu dia a dia. Encontre sua loja mais próxima e aproveite!
+          </p>
+          <div className="mt-6 flex flex-wrap gap-3">
+            <a href="#ofertas" className="rounded-2xl bg-blue-600 px-5 py-3 text-white font-medium hover:bg-blue-700">Ver ofertas</a>
+            <a href="#lojas" className="rounded-2xl border border-gray-300 px-5 py-3 font-medium hover:bg-gray-100">Encontrar lojas</a>
+          </div>
+        </motion.div>
+        <motion.div initial={{ opacity: 0, scale: 0.98 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.6 }}>
+          <div className="aspect-video w-full rounded-3xl bg-gradient-to-tr from-blue-600 to-blue-400 p-1 shadow-xl">
+            <div className="h-full w-full rounded-3xl bg-white/10 backdrop-blur flex items-center justify-center">
+              <div className="grid grid-cols-3 gap-3 p-6 w-full">
+                {[...Array(6)].map((_, i) => (
+                  <div key={i} className="h-24 rounded-2xl bg-white/80 shadow-inner" />
+                ))}
+                <div className="col-span-3 h-28 rounded-2xl bg-white/80 shadow-inner" />
+              </div>
+            </div>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
+function FeatureTiles() {
+  const tiles = [
+    { title: "Ofertas da Semana", desc: "Descontos especiais em itens selecionados.", icon: Percent },
+    { title: "Clube de Vantagens", desc: "Acumule pontos e ganhe benefícios.", icon: ShoppingCart },
+    { title: "Encontre uma Loja", desc: "Veja lojas próximas a você.", icon: MapPin },
+  ];
+  return (
+    <section id="ofertas" className="mx-auto max-w-7xl px-4 py-10">
+      <div className="grid md:grid-cols-3 gap-5">
+        {tiles.map(({ title, desc, icon: Icon }) => (
+          <motion.div key={title} whileHover={{ y: -4 }} className="rounded-3xl border bg-white p-6 shadow-sm">
+            <div className="flex items-center gap-3">
+              <div className="rounded-2xl bg-blue-50 p-3"><Icon className="h-5 w-5 text-blue-700" /></div>
+              <h3 className="font-semibold text-lg">{title}</h3>
+            </div>
+            <p className="mt-3 text-gray-600">{desc}</p>
+            <button className="mt-4 inline-flex items-center gap-2 text-blue-700 font-medium">
+              Ver mais <ChevronRight className="h-4 w-4" />
+            </button>
+          </motion.div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function PromoCarousel() {
+  const cards = [
+    { tag: "SÁBADO NO AÇOUGUE", title: "Cortes selecionados com preço imbatível", detail: "Válido somente em 23/08/2025.", emoji: "🥩🔥" },
+    { tag: "HIGIENE E LIMPEZA", title: "Leve 3, pague 2", detail: "Somente para membros do clube.", emoji: "🧼✨" },
+    { tag: "HORTIFRUTI", title: "Feira de terça com super descontos", detail: "Frutas e verduras fresquinhas.", emoji: "🍓🥬" },
+  ];
+
+  return (
+    <section className="bg-white">
+      <div className="mx-auto max-w-7xl px-4 py-10">
+        <div className="grid md:grid-cols-3 gap-5">
+          {cards.map((c, i) => (
+            <motion.article key={i} whileHover={{ scale: 1.01 }} className="rounded-3xl border p-6 shadow-sm bg-gradient-to-b from-gray-50 to-white">
+              <div className="text-xs font-semibold tracking-widest text-blue-700">{c.tag}</div>
+              <h4 className="mt-2 text-xl font-bold">{c.emoji} {c.title}</h4>
+              <p className="mt-2 text-gray-600">{c.detail}</p>
+              <button className="mt-4 inline-flex items-center gap-2 rounded-xl border px-4 py-2 text-sm font-medium hover:bg-gray-50">
+                Ver ofertas <ChevronRight className="h-4 w-4" />
+              </button>
+            </motion.article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function StoreLocatorCTA() {
+  return (
+    <section id="lojas" className="relative overflow-hidden">
+      <div aria-hidden className="absolute -left-40 top-0 h-80 w-80 rounded-full bg-blue-300/20 blur-3xl" />
+      <div className="mx-auto max-w-7xl px-4 py-14 grid lg:grid-cols-2 gap-8 items-center">
+        <div>
+          <h2 className="text-2xl sm:text-3xl font-extrabold">Encontre a loja mais próxima</h2>
+          <p className="mt-3 text-gray-600">Informe sua cidade ou permita a localização para ver unidades próximas a você.</p>
+          <div className="mt-5 flex gap-3">
+            <div className="relative flex-1 max-w-md">
+              <input className="w-full rounded-2xl border border-gray-200 bg-white px-4 py-3 pl-11 focus:ring-2 focus:ring-blue-500 outline-none" placeholder="Digite sua cidade" />
+              <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-500" />
+            </div>
+            <button className="rounded-2xl bg-blue-600 px-5 py-3 text-white font-medium hover:bg-blue-700">Buscar</button>
+          </div>
+          <div className="mt-4 text-sm text-gray-500">Ou use sua localização atual.</div>
+        </div>
+        <div className="rounded-3xl border bg-white p-4 shadow-sm">
+          <div className="aspect-video w-full rounded-2xl bg-gray-100 grid place-items-center">
+            <MapPin className="h-10 w-10" />
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function NewsSection() {
+  const posts = [
+    { title: "Nova unidade inaugurada", excerpt: "Mais conveniência e ofertas para a sua região.", date: "15 ago 2025" },
+    { title: "Campanha solidária", excerpt: "Doe alimentos não perecíveis em nossas lojas.", date: "08 ago 2025" },
+    { title: "Programa de trainees", excerpt: "Oportunidades de carreira em diversas áreas.", date: "01 ago 2025" },
+  ];
+  return (
+    <section id="noticias" className="bg-gray-50">
+      <div className="mx-auto max-w-7xl px-4 py-12">
+        <div className="flex items-end justify-between mb-6">
+          <h2 className="text-2xl sm:text-3xl font-extrabold">Notícias</h2>
+          <a href="#" className="text-blue-700 font-medium">Ver todas</a>
+        </div>
+        <div className="grid md:grid-cols-3 gap-5">
+          {posts.map((p) => (
+            <article key={p.title} className="rounded-3xl border bg-white p-6 shadow-sm">
+              <div className="aspect-video w-full rounded-2xl bg-gray-100" />
+              <div className="mt-4 text-xs text-gray-500">{p.date}</div>
+              <h3 className="mt-1 font-semibold text-lg">{p.title}</h3>
+              <p className="mt-2 text-gray-600">{p.excerpt}</p>
+              <button className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-blue-700">
+                Ler mais <ChevronRight className="h-4 w-4" />
+              </button>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Footer() {
+  const links = [
+    { label: "Institucional", href: "#institucional" },
+    { label: "Trabalhe Conosco", href: "#trabalhe" },
+    { label: "Política de Privacidade", href: "#privacidade" },
+    { label: "Fale Conosco", href: "#contato" },
+  ];
+  return (
+    <footer className="bg-blue-900 text-white mt-10">
+      <div className="mx-auto max-w-7xl px-4 py-12 grid md:grid-cols-4 gap-8">
+        <div>
+          <div className="flex items-center gap-3">
+            <div className="h-10 w-10 rounded-xl bg-gradient-to-br from-white/90 to-white/60" />
+            <div className="font-bold text-lg tracking-tight">SuperMix</div>
+          </div>
+          <p className="mt-4 text-white/80 text-sm">Rede de lojas focada em preço justo, qualidade e atendimento.</p>
+          <div className="mt-4 flex items-center gap-3">
+            <a href="#" className="rounded-full bg-white/10 p-2 hover:bg-white/20"><Instagram className="h-4 w-4" /></a>
+            <a href="#" className="rounded-full bg-white/10 p-2 hover:bg-white/20"><Facebook className="h-4 w-4" /></a>
+            <a href="#" className="rounded-full bg-white/10 p-2 hover:bg-white/20"><Youtube className="h-4 w-4" /></a>
+          </div>
+        </div>
+        <div>
+          <h4 className="font-semibold">Institucional</h4>
+          <ul className="mt-3 space-y-2 text-sm text-white/80">
+            {links.map(l => (
+              <li key={l.label}><a className="hover:underline" href={l.href}>{l.label}</a></li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          <h4 className="font-semibold">Atendimento</h4>
+          <ul className="mt-3 space-y-2 text-sm text-white/80">
+            <li>0800 000 0000</li>
+            <li>seg a sáb, 8h às 18h</li>
+            <li>suporte@supermix.com</li>
+          </ul>
+        </div>
+        <div>
+          <h4 className="font-semibold">Receba ofertas</h4>
+          <p className="mt-3 text-white/80 text-sm">Cadastre-se para receber nossas promoções da semana.</p>
+          <div className="mt-4 flex gap-2">
+            <input className="flex-1 rounded-2xl border border-white/20 bg-white/10 px-4 py-3 placeholder-white/60 text-white outline-none focus:ring-2 focus:ring-white" placeholder="Seu e-mail" />
+            <button className="rounded-2xl bg-white px-5 py-3 text-blue-900 font-semibold">Assinar</button>
+          </div>
+        </div>
+      </div>
+      <div className="border-t border-white/10">
+        <div className="mx-auto max-w-7xl px-4 py-4 text-xs text-white/70 flex items-center justify-between">
+          <span>© {new Date().getFullYear()} SuperMix. Todos os direitos reservados.</span>
+          <span>Feito com ❤</span>
+        </div>
+      </div>
+    </footer>
+  );
+}
