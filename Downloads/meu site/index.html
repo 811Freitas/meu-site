@@ -1,41 +1,76 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mix Guará - Loja Online</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mix Guará • Ofertas, Endereços e Atendimento</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <h1>Mix Guará</h1>
-        <p>Loja Online - Compras via WhatsApp</p>
-    </header>
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <div class="logo"></div>
+        <div>
+          <b>Mix Guará</b><br>
+          <small class="tag">Preço baixo todo dia</small>
+        </div>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#lojas">Lojas</a></li>
+          <li><a href="#horarios">Horários</a></li>
+          <li><a href="#contato">Contato</a></li>
+        </ul>
+      </nav>
+      <a class="btn" id="zapTop" href="#" target="_blank" rel="noopener">WhatsApp</a>
+    </div>
+  </header>
 
-    <main>
-        <section class="produtos">
-            <div class="produto">
-                <h2>Produto 1</h2>
-                <p>Descrição curta do produto 1.</p>
-                <button onclick="comprar('Produto 1')">Comprar</button>
-            </div>
-            <div class="produto">
-                <h2>Produto 2</h2>
-                <p>Descrição curta do produto 2.</p>
-                <button onclick="comprar('Produto 2')">Comprar</button>
-            </div>
-            <div class="produto">
-                <h2>Produto 3</h2>
-                <p>Descrição curta do produto 3.</p>
-                <button onclick="comprar('Produto 3')">Comprar</button>
-            </div>
-        </section>
-    </main>
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <h1>Sua economia começa aqui.</h1>
+        <p>Bem-vindo ao <b>Mix Guará</b>. Todo dia tem preço baixo de verdade nas suas marcas favoritas.</p>
+        <div class="cta-row">
+          <a class="btn ghost" href="#lojas">Lojas e Endereços</a>
+          <a class="btn" href="#contato">Fale Conosco</a>
+        </div>
+      </div>
+      <div class="hero-figure">
+        <div class="card">
+          <span class="promo-badge">Mix Guará</span>
+          <img src="https://images.unsplash.com/photo-1565688074242-77d6b2918a49?q=80&w=1400&auto=format&fit=crop" alt="Corredor de supermercado com produtos"/>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <footer>
-        <p>&copy; 2025 Mix Guará. Todos os direitos reservados.</p>
-    </footer>
+  <section id="contato">
+    <div class="container">
+      <h2>Contato</h2>
+      <p>Entre em contato com a nossa equipe pelos canais oficiais:</p>
+      <ul>
+        <li>📞 Telefone/WhatsApp: <a href="https://wa.me/5598984573078" target="_blank" rel="noopener">(98) 98457-3078</a></li>
+        <li>📷 Instagram: <a href="https://instagram.com/mixguaraoficial" target="_blank" rel="noopener">@mixguaraoficial</a></li>
+        <li>📘 Facebook: <a href="https://www.facebook.com/mixguara1" target="_blank" rel="noopener">facebook.com/mixguara1</a></li>
+      </ul>
+    </div>
+  </section>
 
-    <script src="script.js"></script>
+  <footer>
+    <div class="container">
+      <b>Mix Guará</b><br>
+      <small>&copy; <span id="ano"></span> Todos os direitos reservados.</small>
+    </div>
+  </footer>
+
+  <script>
+    const WHATSAPP_NUMBER = '5598984573078';
+    const WHATSAPP_MSG = 'Olá! Vim pelo site do Mix Guará e quero saber mais informações.';
+    const zapLink = () => `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MSG)}`;
+    document.getElementById('zapTop').href = zapLink();
+    document.getElementById('ano').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
